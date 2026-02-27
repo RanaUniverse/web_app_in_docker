@@ -1,0 +1,25 @@
+# This is compose.yaml file this should be run which will run all the containers for my applicaion
+
+services:
+  core_app:
+    build: .
+    restart: always
+    ports:
+      - 8002:8001
+  
+
+  caddy:
+    image: caddy:2.11.1-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

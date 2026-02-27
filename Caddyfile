@@ -1,0 +1,11 @@
+# This below is the Caddyfile's content
+
+# if i want to access the caddy sever from same network's another mobiel or devices i need to write the ip address of the laptop
+
+# localhost {
+# 	reverse_proxy 127.0.0.1:8001
+# }
+
+:80 {
+	reverse_proxy core_app:8001
+}
